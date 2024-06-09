@@ -7,12 +7,12 @@ const Tag = require("../dbModel/tag")
 //新增知识
 exports.add = async (req, res) => {
   try {
-    const { question, answer, createdTime, updatedTime } = req.body
-    const knowledge = new Knowledge({question, answer,createdTime,updatedTime})
+    const { question, answer, createTime, updateTime } = req.body
+    const knowledge = new Knowledge({question, answer,createTime,updateTime})
     const result = await knowledge.save()
-    res.status(200).send({message:"添加成功",result})
+    res.send({message:"添加成功",result})
   } catch (err) {
-    res.status(500).json({message:err.message})
+    res.json({message:err.message})
   }
 }
 
@@ -20,9 +20,9 @@ exports.add = async (req, res) => {
 exports.getAll = async (req, res) => {
   try {
     const results = await Knowledge.find()
-    res.status(200).send({message:"获取成功",results})
+    res.send({message:"获取成功",code:0,results})
   } catch (err) {
-    res.status(500).json({message:err.message})
+    res.json({message:err.message,code:1})
   }
 }
 
@@ -45,12 +45,12 @@ exports.getById = async (req, res) => {
     }
     //执行查询
     const results = await Knowledge.find(query)
-    res.status(200).send({
+    res.send({
       results,
       message:"查找成功"
     })
   } catch (err) {
-    res.status(500).send({message:err.message})
+    res.send({message:err.message})
   }
 }
 

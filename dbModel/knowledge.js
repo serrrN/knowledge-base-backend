@@ -9,12 +9,12 @@ const knowledgeSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    createdTime: {
+    createTime: {
         type: Date,
         default: Date.now,
         required: true
     },
-    updatedTime: {
+    updateTime: {
         type: Date,
         default: Date.now,
         required: true

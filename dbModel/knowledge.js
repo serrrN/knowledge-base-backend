@@ -9,6 +9,10 @@ const knowledgeSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    tags: {
+        type: Array,
+        required:true  
+    },
     createTime: {
         type: Date,
         default: Date.now,

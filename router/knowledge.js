@@ -1,9 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const knowledgeController = require('../controller/knowledgeController');
-
+// 导入expreJoi
+const expressJoi = require('@escook/express-joi')
+ const {knowledge_limit} = require("../limit/knowledge")
  //创建知识
-router.post('/add', knowledgeController.add);
+router.post('/add',expressJoi(knowledge_limit),knowledgeController.add);
 
 //获取全部知识
 router.get("/", knowledgeController.getAll)
